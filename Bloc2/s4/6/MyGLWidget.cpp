@@ -220,8 +220,11 @@ void MyGLWidget::creaBuffers() {
     glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(vertexLoc);
 
-    glm::vec3 Colors[1];
+    glm::vec3 Colors[4];
     Colors[0] = glm::vec3(128./255., 77./255., 46./255.); //color marro
+    Colors[1] = glm::vec3(128./255., 77./255., 46./255.); 
+    Colors[2] = glm::vec3(128./255., 77./255., 46./255.); 
+    Colors[3] = glm::vec3(128./255., 77./255., 46./255.); 
 
     GLuint VBO_color_Terra;
     glGenBuffers(1, &VBO_color_Terra);
