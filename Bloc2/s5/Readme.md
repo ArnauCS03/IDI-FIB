@@ -8,4 +8,8 @@ En aquesta pagina enganxar el url de la meva carpeta:  https://github.com/ArnauC
 
 ![patricio2](https://user-images.githubusercontent.com/95536223/228292834-e198887a-ea14-4cf6-bd1a-f6d40b3d057b.jpg)
 
+Para los bilingües:
+
+![patricio3](https://user-images.githubusercontent.com/95536223/228319764-f3b0b3b7-53b9-4c44-89b9-4393a9d6a949.png)
+![patricio4](https://user-images.githubusercontent.com/95536223/228320080-a6b2ac19-2b7a-4e25-b514-549fb8009986.png)
 
