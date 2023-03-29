@@ -64,6 +64,7 @@ void MyGLWidget::initializeGL() {
     ratoli.inici_accio = false;
     ratoli.invertir_moviment = false;
     ratoli.sensitibity = 200;
+    ratoli.modo_freestyle = false;
 
 
     ini_escena();
@@ -235,7 +236,7 @@ void MyGLWidget::mousePressEvent (QMouseEvent *event) {
 
     makeCurrent();
     if (event -> buttons() == Qt::LeftButton && 
-    !(event -> modifiers() & (Qt::ShiftModifier | Qt::ShiftModifier | Qt::ControlModifier))) { // click esquerra només
+    !(event -> modifiers() & (Qt::ShiftModifier | Qt::AltModifier | Qt::ControlModifier))) { // click esquerra només
         ratoli.inici_accio = true;
 
         ratoli.pos_inicial.x = event->x();
@@ -249,6 +250,12 @@ void MyGLWidget::mousePressEvent (QMouseEvent *event) {
         ratoli.pos_inicial.x = event->x();
         ratoli.pos_inicial.y = event->y();
     }
+    //[] amb ctrl + click   modo freestyle 
+    else if (event -> buttons() == Qt::LeftButton && (event -> modifiers() & Qt::ControlModifier)) {
+        ratoli.inici_accio = true;
+        ratoli.modo_freestyle = true;
+        ratoli.sensitibity = 300;
+    }
 
     update();
 }
@@ -261,27 +268,48 @@ void MyGLWidget::mouseMoveEvent (QMouseEvent *event) {
             cam3persona.psi -= (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; // divirir tot entre 200, és un suavitzador
             cam3persona.theta -= (event->y() - ratoli.pos_inicial.y)/ratoli.sensitibity;
 
-            ratoli.pos_inicial.x = event->x(); // la posicio actual passa a ser la anterior
-            ratoli.pos_inicial.y = event->y();
+            if (not ratoli.modo_freestyle) {
+                ratoli.pos_inicial.x = event->x(); // la posicio actual passa a ser la anterior
+                ratoli.pos_inicial.y = event->y();
+            }
+            
         }
         else { //[Opional] invertir moviment
             cam3persona.psi += (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; 
             cam3persona.theta += (event->y() - ratoli.pos_inicial.y)/ratoli.sensitibity;
 
-            ratoli.pos_inicial.x = event->x(); 
-            ratoli.pos_inicial.y = event->y();
+            if (not ratoli.modo_freestyle) {
+                ratoli.pos_inicial.x = event->x(); 
+                ratoli.pos_inicial.y = event->y();
+            }
         }
-        
     }
     
     update();
+
+
+    // ====== Sense coses extres és aixi ======
+    /*
+     if (ratoli.inici_accio) {
+        cam3persona.psi -= (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; // divirir tot entre 200, és un suavitzador
+        cam3persona.theta -= (event->y() - ratoli.pos_inicial.y)/ratoli.sensitibity;
+        
+        ratoli.pos_inicial.x = event->x(); // la posicio actual passa a ser la anterior
+        ratoli.pos_inicial.y = event->y();
+    */
+
 }
 
 void MyGLWidget::mouseReleaseEvent (QMouseEvent *event) {
 
     makeCurrent();
     ratoli.inici_accio = false;
-    ratoli.invertir_moviment = false;
+    ratoli.invertir_moviment = false; // []
+    if (ratoli.modo_freestyle) {      // []
+        ratoli.pos_inicial.x = event->x(); 
+        ratoli.pos_inicial.y = event->y();
+    }
+    ratoli.modo_freestyle = false;    // []
     event->ignore();
     update();
 }
