@@ -103,6 +103,7 @@ class MyGLWidget : public BL2GLWidget {
       glm::vec2 pos_inicial;    // pos x i y d'on hem clicat 
       float sensitibity;        // suavitzador del moviment amb el ratolí [opcional]
       float invertir_moviment;  //[] amb shift + click  el movient del ratoli es invertit 
+      bool modo_freestyle;      //[]
     };
     
     Ratoli ratoli;
