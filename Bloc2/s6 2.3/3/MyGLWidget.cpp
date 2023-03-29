@@ -226,11 +226,27 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event) {
             if(cam3persona.prespectiva) cam3persona.prespectiva = false;
             else cam3persona.prespectiva = true;
             break;
+            
         case Qt::Key_Z :   // zoom-in
             if (cam3persona.FOV > 0.1) cam3persona.FOV -= float(M_PI)/40.; // en radians //serien 4.5º  
+            // Per ortogonal diferent 
+            if (not cam3persona.prespectiva) {
+                // modifiquem el window
+                cam3persona.left += 0.08;
+                cam3persona.right -= 0.08;
+                cam3persona.bottom += 0.08;
+                cam3persona.top -= 0.08;
+            }
             break;
+            
         case Qt::Key_X :   // zoom-out
             if (cam3persona.FOV < M_PI) cam3persona.FOV += float(M_PI)/40.; // en radians
+            if (not cam3persona.prespectiva) {
+                cam3persona.left -= 0.08;
+                cam3persona.right += 0.08;
+                cam3persona.bottom -= 0.08;
+                cam3persona.top += 0.08;
+            }
             break;
 
         default: event->ignore(); break;
