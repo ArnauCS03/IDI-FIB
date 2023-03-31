@@ -57,7 +57,7 @@ void MyGLWidget::initializeGL() {
 
     // inicialitzacio parametres
     cam3persona.prespectiva = true;
-    patricio1.angle = 0;
+    patricio.angle = 0;
     cam3persona.psi = 0;  
     cam3persona.theta = 0; 
     cam3persona.phi = 0;
@@ -125,24 +125,25 @@ void MyGLWidget::paintGL() {
     modelTransformPatricio1 ();
 
     // Activem el VAO
-    glBindVertexArray (patricio1.VAO_Patricio);
+    glBindVertexArray (patricio.VAO);
 
     // pintem
-    glDrawArrays(GL_TRIANGLES, 0, patricio1.model.faces().size()*3);
+    glDrawArrays(GL_TRIANGLES, 0, patricio.model.faces().size()*3);
 
     glBindVertexArray (0);
 
-
+    // El segon patricio és el mateix que el primer, amb diferent transformació pero pintat igual que el primer.
     modelTransformPatricio2 ();
 
     pintaPatricio2();
+
 
     modelTransformPatricio3 ();
 
     pintaPatricio3();
 
 
-
+    // Terra
     modelTransformTerra();
     
     glBindVertexArray (VAO_Terra);
@@ -154,21 +155,19 @@ void MyGLWidget::paintGL() {
 
 
 void MyGLWidget::pintaPatricio2() {
-    // Activem el VAO
-    glBindVertexArray (patricio1.VAO_Patricio);
+   
+    glBindVertexArray (patricio.VAO);
 
-    // pintem
-    glDrawArrays(GL_TRIANGLES, 0, patricio1.model.faces().size()*3);
+    glDrawArrays(GL_TRIANGLES, 0, patricio.model.faces().size()*3);
 
     glBindVertexArray (0);
 }
 
 void MyGLWidget::pintaPatricio3() {
-    // Activem el VAO
-    glBindVertexArray (patricio1.VAO_Patricio);
 
-    // pintem
-    glDrawArrays(GL_TRIANGLES, 0, patricio1.model.faces().size()*3);
+    glBindVertexArray (patricio.VAO);
+
+    glDrawArrays(GL_TRIANGLES, 0, patricio.model.faces().size()*3);
 
     glBindVertexArray (0);
 }
@@ -202,26 +201,26 @@ void MyGLWidget::resizeGL (int w, int h) {
 void MyGLWidget::modelTransformPatricio1() {
     glm::mat4 transform (1.0f);
     transform = glm::translate(transform, glm::vec3(2, 0, 2));
-    transform = glm::rotate(transform, patricio1.angle, glm::vec3(0, 1, 0));
-    transform = glm::scale(transform, glm::vec3(patricio1.escala*escala));
-    transform = glm::translate(transform, glm::vec3(0-patricio1.centreBase.x, 0-patricio1.centreBase.y, 0-patricio1.centreBase.z));
+    transform = glm::rotate(transform, patricio.angle, glm::vec3(0, 1, 0));
+    transform = glm::scale(transform, glm::vec3(patricio.escala*escala));
+    transform = glm::translate(transform, glm::vec3(0-patricio.centreBase.x, 0-patricio.centreBase.y, 0-patricio.centreBase.z));
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
 void MyGLWidget::modelTransformPatricio2() {
     glm::mat4 transform (1.0f);
-    transform = glm::rotate(transform, patricio1.angle+float(M_PI)/2.f, glm::vec3(0, 1, 0));
-    transform = glm::scale(transform, glm::vec3(patricio1.escala*escala));
-    transform = glm::translate(transform, glm::vec3(0-patricio1.centreBase.x, 0-patricio1.centreBase.y, 0-patricio1.centreBase.z));
+    transform = glm::rotate(transform, patricio.angle+float(M_PI)/2.f, glm::vec3(0, 1, 0));
+    transform = glm::scale(transform, glm::vec3(patricio.escala*escala));
+    transform = glm::translate(transform, glm::vec3(0-patricio.centreBase.x, 0-patricio.centreBase.y, 0-patricio.centreBase.z));
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
 void MyGLWidget::modelTransformPatricio3() {
     glm::mat4 transform (1.0f);
     transform = glm::translate(transform, glm::vec3(-2, 0, -2));
-    transform = glm::rotate(transform, patricio1.angle+float(M_PI), glm::vec3(0, 1, 0));
-    transform = glm::scale(transform, glm::vec3(patricio1.escala*escala));
-    transform = glm::translate(transform, glm::vec3(0-patricio1.centreBase.x, 0-patricio1.centreBase.y, 0-patricio1.centreBase.z));
+    transform = glm::rotate(transform, patricio.angle+float(M_PI), glm::vec3(0, 1, 0));
+    transform = glm::scale(transform, glm::vec3(patricio.escala*escala));
+    transform = glm::translate(transform, glm::vec3(0-patricio.centreBase.x, 0-patricio.centreBase.y, 0-patricio.centreBase.z));
     glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
@@ -265,7 +264,7 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event) {
             break;
 
         case Qt::Key_R :  // rotar
-            patricio1.angle += M_PI/4;
+            patricio.angle += M_PI/4;
             break;
 
         case Qt::Key_O :   
@@ -385,42 +384,42 @@ void MyGLWidget::mouseReleaseEvent (QMouseEvent *event) {
 void MyGLWidget::calcularCapsa_Patricio() {
   
     float minx, miny, minz, maxx, maxy, maxz;
-    minx = maxx = patricio1.model.vertices()[0];
-    miny = maxy = patricio1.model.vertices()[1];
-    minz = maxz = patricio1.model.vertices()[2];
+    minx = maxx = patricio.model.vertices()[0];
+    miny = maxy = patricio.model.vertices()[1];
+    minz = maxz = patricio.model.vertices()[2];
 
-    for (unsigned int i = 3; i < patricio1.model.vertices().size(); i += 3) {
-        minx = fmin(minx, patricio1.model.vertices()[i+0]);
-        maxx = fmax(maxx, patricio1.model.vertices()[i+0]);
+    for (unsigned int i = 3; i < patricio.model.vertices().size(); i += 3) {
+        minx = fmin(minx, patricio.model.vertices()[i+0]);
+        maxx = fmax(maxx, patricio.model.vertices()[i+0]);
 
-        miny = fmin(miny, patricio1.model.vertices()[i+1]);
-        maxy = fmax(maxy, patricio1.model.vertices()[i+1]);
+        miny = fmin(miny, patricio.model.vertices()[i+1]);
+        maxy = fmax(maxy, patricio.model.vertices()[i+1]);
 
-        minz = fmin(minz, patricio1.model.vertices()[i+2]);
-        maxz = fmax(maxz, patricio1.model.vertices()[i+2]);
+        minz = fmin(minz, patricio.model.vertices()[i+2]);
+        maxz = fmax(maxz, patricio.model.vertices()[i+2]);
     }
 
-    patricio1.minim = glm::vec3(minx, miny, minz);
-    patricio1.maxim = glm::vec3(maxx, maxy, maxz);
-    patricio1.centre = glm::vec3((patricio1.minim + patricio1.maxim) / 2.f);
-    patricio1.centreBase = glm::vec3((minx + maxx)/2.f, miny, (minz + maxz)/2.f);
-    patricio1.amplada = maxx - minx;
-    patricio1.profunditat = maxz - minz;
-    patricio1.alcada = maxy - miny;
-    patricio1.escala = 1./(maxy-miny);
+    patricio.minim = glm::vec3(minx, miny, minz);
+    patricio.maxim = glm::vec3(maxx, maxy, maxz);
+    patricio.centre = glm::vec3((patricio.minim + patricio.maxim) / 2.f);
+    patricio.centreBase = glm::vec3((minx + maxx)/2.f, miny, (minz + maxz)/2.f);
+    patricio.amplada = maxx - minx;
+    patricio.profunditat = maxz - minz;
+    patricio.alcada = maxy - miny;
+    patricio.escala = 1./(maxy-miny);
 }
 
 
 void MyGLWidget::creaBuffers() {
 
-    patricio1.model.load("../../../models/Patricio.obj");  //ruta relativa, a 3 carpetes superior
+    patricio.model.load("../../../models/Patricio.obj");  //ruta relativa, a 3 carpetes superior
    
     calcularCapsa_Patricio(); 
 
 
     // Creació del VAO
-    glGenVertexArrays(1, &patricio1.VAO_Patricio);
-    glBindVertexArray(patricio1.VAO_Patricio);
+    glGenVertexArrays(1, &patricio.VAO);
+    glBindVertexArray(patricio.VAO);
 
     // Creació del buffer amb les dades dels vèrtexs
     GLuint VBO1;
@@ -428,7 +427,7 @@ void MyGLWidget::creaBuffers() {
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
 
     //nou-----
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*patricio1.model.faces().size()*3*3, patricio1.model.VBO_vertices(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*patricio.model.faces().size()*3*3, patricio.model.VBO_vertices(), GL_STATIC_DRAW);
 
     // Activem l'atribut
     glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
@@ -440,7 +439,7 @@ void MyGLWidget::creaBuffers() {
     glGenBuffers(1, &VBO_color);
     glBindBuffer(GL_ARRAY_BUFFER, VBO_color);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*patricio1.model.faces().size()*3*3, patricio1.model.VBO_matdiff(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*patricio.model.faces().size()*3*3, patricio.model.VBO_matdiff(), GL_STATIC_DRAW);
 
     // Activem l'atribut
     glVertexAttribPointer(colorLoc, 3, GL_FLOAT, GL_FALSE, 0, 0); 
