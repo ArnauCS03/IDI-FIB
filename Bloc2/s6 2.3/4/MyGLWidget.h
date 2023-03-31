@@ -1,7 +1,7 @@
 // MyGLWidget.h
 #include "BL2GLWidget.h"
 #include "model.h"
-#include <QMouseEvent> // nou
+#include <QMouseEvent>
 
 class MyGLWidget : public BL2GLWidget {
   Q_OBJECT
