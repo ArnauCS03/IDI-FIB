@@ -437,10 +437,7 @@ void MyGLWidget::creaBuffers() {
     patricio.model.load("../../../models/Patricio.obj");  //ruta relativa, a 3 carpetes superior
    
     calcularCapsa_Patricio(); 
-
-    //patricio4 = patricio;
-   // patricio4.model = patricio.model;
-
+    
     // Creació del VAO
     glGenVertexArrays(1, &patricio.VAO);
     glBindVertexArray(patricio.VAO);
@@ -450,7 +447,6 @@ void MyGLWidget::creaBuffers() {
     glGenBuffers(1, &VBO1);
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
 
-    //nou-----
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*patricio.model.faces().size()*3*3, patricio.model.VBO_vertices(), GL_STATIC_DRAW);
 
     // Activem l'atribut
