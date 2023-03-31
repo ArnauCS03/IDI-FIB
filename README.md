@@ -12,4 +12,6 @@ Apartats dels Blocs separats en grups, codi llegible i les coses ben posades on 
 
 ![Screenshot from 2023-03-29 12-37-39](https://user-images.githubusercontent.com/95536223/228509034-8bfa06c7-e5f3-43e9-9bce-d58d37aea77d.png)
 
+![5](https://user-images.githubusercontent.com/95536223/229100717-1175aae3-2ed8-46b7-86cd-50771c1f7fcc.png)
+
 ![meme](https://user-images.githubusercontent.com/95536223/228009664-e5a3a45b-59fe-4ce1-abaa-67cace594136.png)
