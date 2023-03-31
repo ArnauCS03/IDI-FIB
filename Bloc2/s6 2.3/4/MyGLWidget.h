@@ -20,6 +20,10 @@ class MyGLWidget : public BL2GLWidget {
 
     virtual void paintGL();
 
+    virtual void pintaPatricio2();
+
+    virtual void pintaPatricio3();
+
     virtual void resizeGL(int width, int height);
 
     virtual void modelTransformPatricio1();
@@ -29,10 +33,6 @@ class MyGLWidget : public BL2GLWidget {
     virtual void modelTransformPatricio3();
 
     virtual void modelTransformTerra();
-
-    virtual void pintaPatricio2();
-
-    virtual void pintaPatricio3();
 
     virtual void projectTransform();
 
@@ -56,7 +56,6 @@ class MyGLWidget : public BL2GLWidget {
     GLuint projLoc;
     GLuint viewLoc;
 
-    //GLuint VAO_Patricio;
     GLuint VAO_Terra;
 
     
@@ -73,10 +72,10 @@ class MyGLWidget : public BL2GLWidget {
       float alcada;
       float escala;
       float angle; 
-      GLuint VAO_Patricio;
+      GLuint VAO;
     };
 
-    Figura patricio1;
+    Figura patricio;
   
     struct Escena {
       glm::vec3 minim;
@@ -104,7 +103,6 @@ class MyGLWidget : public BL2GLWidget {
       glm::vec3 VRP;
       glm::vec3 UP;
       bool prespectiva;
-      // Angles euler:
       float psi;    // Ψ
       float theta;  // θ
       float phi;    // φ
