@@ -330,7 +330,7 @@ void MyGLWidget::mouseMoveEvent (QMouseEvent *event) {
     makeCurrent();
     if (ratoli.inici_accio) {
         if (!ratoli.invertir_moviment) {
-            cam3persona.psi -= (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; // divirir tot entre 200, és un suavitzador
+            cam3persona.psi += (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; // divirir tot entre 200, és un suavitzador
             cam3persona.theta -= (event->y() - ratoli.pos_inicial.y)/ratoli.sensitibity;
 
             if (not ratoli.modo_freestyle) {
@@ -340,7 +340,7 @@ void MyGLWidget::mouseMoveEvent (QMouseEvent *event) {
             
         }
         else { //[Opional] invertir moviment
-            cam3persona.psi += (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; 
+            cam3persona.psi -= (event->x() - ratoli.pos_inicial.x)/ratoli.sensitibity; 
             cam3persona.theta += (event->y() - ratoli.pos_inicial.y)/ratoli.sensitibity;
 
             if (not ratoli.modo_freestyle) {
