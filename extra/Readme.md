@@ -8,6 +8,8 @@ No em deixava pintar-lo tot taronja perque té molts vertexs. Si el voleu modifi
 
 
 
+
+
 Peces d'escacs que vaig fer amb blender, que són 2D vistes des de dalt i 3D de costat.
 ![chess](https://user-images.githubusercontent.com/95536223/229641382-9d22c5b2-e31e-4401-a95d-1daa529e481e.png)
 
