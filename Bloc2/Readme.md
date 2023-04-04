@@ -7,7 +7,3 @@ https://github.com/ArnauCS03/IDI-FIB/tree/main/Bloc2/s5
 
 
 
-[Laboratori 2022-2023 Q1](https://github.com/ArnauCS03/IDI-FIB)
-
-
-
