@@ -1,3 +1,3 @@
 El més difícil és calcular el VRP a partir de l'angle de la videocamera i fer el segon viewport d'adalt a la dreta.
 
-![EscIni](https://user-images.githubusercontent.com/95536223/231248714-7daef231-e6b8-4e3a-9735-226c480c64d2.png)
+![6a](https://user-images.githubusercontent.com/95536223/231249137-8051acf5-0db8-4601-9d37-e3979d02d8b9.png)
