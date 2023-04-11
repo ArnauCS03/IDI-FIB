@@ -16,4 +16,6 @@ Apartats dels Blocs separats en grups, codi llegible i les coses ben posades on 
 
 ![5](https://user-images.githubusercontent.com/95536223/229100717-1175aae3-2ed8-46b7-86cd-50771c1f7fcc.png)
 
+![6](https://user-images.githubusercontent.com/95536223/231248127-ebba7785-4510-49df-87a4-70f41c48052c.png)
+
 ![meme](https://user-images.githubusercontent.com/95536223/228009664-e5a3a45b-59fe-4ce1-abaa-67cace594136.png)
