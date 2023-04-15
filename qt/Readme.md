@@ -11,3 +11,6 @@ Per executar-lo:  ``` $ designer ```
 ![qt2a](https://user-images.githubusercontent.com/95536223/232205767-7c1d011a-835a-40d8-8973-b445c8e8b4b0.png)
 
 ![qt2a](https://user-images.githubusercontent.com/95536223/232202903-0310684d-0f00-4969-9a31-5733f1a0d237.png)
+
+![qt4a](https://user-images.githubusercontent.com/95536223/232206849-a00d19ae-4d13-46bb-886c-c60fb9cdf0e4.png)
+
