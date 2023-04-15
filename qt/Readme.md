@@ -5,6 +5,7 @@ Per executar-lo:  ``` $ designer ```
 ---
 
 
+
 ![qt1a](https://user-images.githubusercontent.com/95536223/232202893-5bd7b2ff-d797-4e1c-86b4-d9c76519923f.png)
 
 
