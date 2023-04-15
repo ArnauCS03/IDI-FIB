@@ -16,4 +16,5 @@ Per executar-lo:  ``` $ designer ```
 
 ![qt5a](https://user-images.githubusercontent.com/95536223/232210712-2106b00b-d936-478b-92ed-48218cedc00c.png)
 
+![qt6a](https://user-images.githubusercontent.com/95536223/232216569-2e40c8df-49dc-426a-bcb1-2d56d915e505.png)
 
