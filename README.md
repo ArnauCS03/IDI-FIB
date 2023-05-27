@@ -22,4 +22,6 @@ Apartats dels Blocs separats en grups, codi llegible i les coses ben posades on 
 
 ![7](https://github.com/ArnauCS03/IDI-FIB/assets/95536223/37bdaa69-5c07-4ff8-8fc6-853dc16e893f)
 
+![9](https://github.com/ArnauCS03/IDI-FIB/assets/95536223/e2f93157-e1e2-4b4f-a8a2-9f8b216cb8f9)
+
 ![meme](https://user-images.githubusercontent.com/95536223/228009664-e5a3a45b-59fe-4ce1-abaa-67cace594136.png)
