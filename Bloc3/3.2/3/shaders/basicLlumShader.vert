@@ -18,7 +18,6 @@ out vec3 fcolor;
 out vec4 vertexSCO;
 out vec3 normalSCO;
 
-
 out vec3 matambFS;
 out vec3 matdifFS;
 out vec3 matspecFS;
@@ -35,16 +34,12 @@ void main() {
 
   // Normal en SCO
     mat3 normalMatrix = inverse (transpose(mat3(view*TG)));
-    normalSCO = normalize(normalMatrix*normal);
+    normalSCO = vec3(normalMatrix*normal);
 
     matambFS = matamb;
     matdifFS = matdiff;
     matspecFS = matspec; 
     matshinFS = matshin;
-
-    viewFS = view;
-    TGFS = TG;
-    
   
     gl_Position = proj * vertexSCO;
 }
