@@ -3,24 +3,17 @@
 in vec3 fcolor;
 out vec4 FragColor;
 
-
 in vec4 vertexSCO;
 in vec3 normalSCO;
-
 
 in vec3 matambFS;
 in vec3 matdifFS;
 in vec3 matspecFS;
 in float matshinFS;
 
-in mat4 viewFS;
-in mat4 TGFS;
-
-
 uniform vec4 posFocusFS;
 uniform vec3 colorFocusFS;
 uniform vec3 llumAmbient;
-
 
 
 vec3 Ambient() {
@@ -65,14 +58,12 @@ void main() {
   // Normalitzar la L
   vec3 LSCO = normalize(posFocusFS.xyz - vertexSCO.xyz);
 
-  // Tornar a normalitzar la Normal
-    mat3 normalMatrix = inverse(transpose(mat3(viewFS * TGFS)));
-    vec3 normalSCOFS = normalize(normalMatrix * normalSCO);         // Normalitzem la normal del VS
+  // Tornar a normalitzar la Normal  (no cal tornar a calcular matriu inversa)
+    vec3 normalSCOFS = normalize(normalSCO);        
 
+    vec3 fcolor = Ambient() + 
+    	          Difus(normalSCOFS, LSCO, colorFocusFS) +
+                  Especular(normalSCOFS, LSCO, vertexSCO, colorFocusFS);
 
-	vec3 fcolor = Ambient() + 
-             Difus(normalSCOFS, LSCO, colorFocusFS) +
-             Especular(normalSCOFS, LSCO, vertexSCO, colorFocusFS);
-
-	FragColor = vec4(fcolor, 1);	
+    FragColor = vec4(fcolor, 1);	
 }
