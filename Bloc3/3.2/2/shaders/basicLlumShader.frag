@@ -13,14 +13,9 @@ in vec3 matdifFS;
 in vec3 matspecFS;
 in float matshinFS;
 
-in mat4 viewFS;
-in mat4 TGFS;
-
-
-uniform vec4 posFocusFS;
+uniform vec4 posFocusFS; // Ja en SCO, es de camara (no cal multiplicar per view al VS)
 uniform vec3 colorFocusFS;
 uniform vec3 llumAmbient;
-
 
 
 vec3 Ambient() {
@@ -66,8 +61,7 @@ void main() {
   vec3 LSCO = normalize(posFocusFS.xyz - vertexSCO.xyz);
 
   // Tornar a normalitzar la Normal
-    mat3 normalMatrix = inverse(transpose(mat3(viewFS * TGFS)));
-    vec3 normalSCOFS = normalize(normalMatrix * normalSCO);         // Normalitzem la normal del VS
+    vec3 normalSCOFS = normalize(normalSCO);     
 
 
 	vec3 fcolor = Ambient() + 
