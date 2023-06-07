@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MyForm</class>
+ <widget class="QWidget" name="MyForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>819</width>
+    <height>726</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>IDI-Lab</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="MyGLWidget" name="widget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>630</y>
+        <width>271</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QRadioButton" name="radioButton">
+         <property name="text">
+          <string>Camera1</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_2">
+         <property name="text">
+          <string>Camera2 (ortogonal)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>630</y>
+        <width>341</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>23</number>
+       </property>
+       <item>
+        <widget class="QRadioButton" name="radioButton_3">
+         <property name="text">
+          <string>Patricio al Cub1</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_4">
+         <property name="text">
+          <string>Cub2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_5">
+         <property name="text">
+          <string>Cub3</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&amp;Sortir</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QWidget</extends>
+   <header>MyGLWidget.h</header>
+   <container>1</container>
+   <slots>
+    <signal>camera1()</signal>
+    <signal>camera2()</signal>
+    <signal>Cub1()</signal>
+    <signal>Cub2()</signal>
+    <signal>Cub3()</signal>
+    <slot>tractaCamera1()</slot>
+    <slot>tractaCamera2()</slot>
+    <slot>tractaCub1()</slot>
+    <slot>tractaCub2()</slot>
+    <slot>tractaCub3()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MyForm</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>808</x>
+     <y>715</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>839</x>
+     <y>529</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>tractaCamera1()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>666</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>85</x>
+     <y>623</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>tractaCamera2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>202</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>236</x>
+     <y>637</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>camera2()</signal>
+   <receiver>radioButton_2</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>609</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>665</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>camera1()</signal>
+   <receiver>radioButton</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>658</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>tractaCub1()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>660</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>594</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>tractaCub2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>554</x>
+     <y>658</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>560</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>tractaCub3()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>658</x>
+     <y>660</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>620</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>Cub1()</signal>
+   <receiver>radioButton_3</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>659</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>468</x>
+     <y>655</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>Cub2()</signal>
+   <receiver>radioButton_4</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>605</x>
+     <y>353</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>541</x>
+     <y>658</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>Cub3()</signal>
+   <receiver>radioButton_5</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>686</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>646</x>
+     <y>660</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>tractaCamera1()</slot>
+  <slot>tractaCamera2()</slot>
+ </slots>
+</ui>
