@@ -63,7 +63,7 @@ void MyGLWidget::initializeGL() {
 
 void MyGLWidget::iniFocus() {
 
-  posFocus = glm::vec4(0, 0, 0, 1);
+  posFocus = glm::vec4(0, 0, 0, 1);  // de camara, ja esta en SCO
   colorFocus = glm::vec3(0.8, 0.8, 0.8);
   llumAmbient = glm::vec3(0.2, 0.2, 0.2);
 
