@@ -137,16 +137,23 @@ void MyGLWidget::paintGL() {
 
 
 void MyGLWidget::resizeGL (int w, int h) {
-    ample = w;
-    alt = h;
+    
+#ifdef __APPLE__
+  // Aquest codi és necessari únicament per a MACs amb pantalla retina.
+  GLint vp[4];
+  glGetIntegerv (GL_VIEWPORT, vp);
+  ample = vp[2];
+  alt = vp[3];
+#else
+  ample = w;
+  alt = h;
+#endif
 
     float ra = float(w)/float(h); // rav
 
     cam3persona.raw = ra;   
     if (prespectiva) {
-        if (ra < 1) {
-            cam3persona.FOV = 2*atan(tan(cam3persona.FOVinicial/2)/ra);
-        }
+        if (ra < 1) cam3persona.FOV = 2*atan(tan(cam3persona.FOVinicial/2)/ra);
     }
     else { //resize ortogonal
         if (ra > 1) {
