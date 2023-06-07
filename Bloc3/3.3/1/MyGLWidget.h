@@ -14,8 +14,6 @@ class MyGLWidget : public BL3GLWidget {
 
     virtual void iniFocus();
 
-    virtual void paintGL();
-
     virtual void mouseMoveEvent(QMouseEvent *e);
     virtual void keyPressEvent(QKeyEvent* event);
 
