@@ -105,7 +105,7 @@ void MyGLWidget::iniMaterialTerra() {
 
   amb = glm::vec3(0,0,0.2);
   diff = glm::vec3(0,0,0.8);
-  spec = glm::vec3(0,0,1);
-  shin = 150;
+  spec = glm::vec3(1,1,1);
+  shin = 100;
 }
 
