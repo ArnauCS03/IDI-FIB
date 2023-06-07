@@ -61,15 +61,6 @@ void MyGLWidget::initializeGL() {
   iniFocus();
 }
 
-
-void MyGLWidget::paintGL() {
-
-    BL3GLWidget::paintGL();
-
-    viewTransform();
-}
-
-
 void MyGLWidget::iniFocus() {
 
   posFocusEscena = glm::vec4(1., 1., 1., 1.);
