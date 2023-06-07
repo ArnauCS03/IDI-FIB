@@ -12,9 +12,6 @@ uniform mat4 proj;
 uniform mat4 view;
 uniform mat4 TG;
 
-
-out vec3 fcolor;
-
 out vec4 vertexSCO;
 out vec3 normalSCO;
 
@@ -23,9 +20,6 @@ out vec3 matambFS;
 out vec3 matdifFS;
 out vec3 matspecFS;
 out float matshinFS;
-
-out mat4 viewFS;
-out mat4 TGFS;
 
 
 void main() {	
@@ -42,9 +36,5 @@ void main() {
     matspecFS = matspec; 
     matshinFS = matshin;
 
-    viewFS = view;
-    TGFS = TG;
-    
-  
     gl_Position = proj * vertexSCO;
 }
