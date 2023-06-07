@@ -98,10 +98,10 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
 
 void MyGLWidget::iniMaterialTerra() {
   
-  amb = glm::vec3(0,0,1);
-  diff = glm::vec3(0,0,1);
-  spec = glm::vec3(0,0,1);
-  shin = 150;
+  amb = glm::vec3(0,0,0.2);
+  diff = glm::vec3(0,0,0.8);
+  spec = glm::vec3(1,1,1);
+  shin = 100;
 }
 
 
